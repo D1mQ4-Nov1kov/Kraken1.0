@@ -20,19 +20,26 @@ def fakePerson():
     ]
     email = '@gmail.com'
     msgs = [
-        'Allah dağına göre kar verir.',
-        'Ahmet almadı, Mehmet te vermedi.',
-        'Koça boynuzu yük değil.',
-        'Kaza geliyorum demez.',
-        'Hırsızlık bir ekmekten, kahpelik bir öpmekten.',
-        'Karga kekliği taklit edeyim derken kendi yürüyüşünü şaşırmış.',
-        'İki cambaz bir ipte oynamaz.',
-        'İki koç kafası bir kazanda kaynamaz.',
-        'Yaza çıkardık danayı, beğenmez oldu anayı.',
-        'Merhaba, bir iş teklifi var. Bana bir e-posta yaz.'
-        'Ку шлюха. Привет от чатика'
-        'Кстати иди нахуй.'
-        'Верни 130к сука.'
+        # 'Allah dağına göre kar verir.',
+        # 'Ahmet almadı, Mehmet te vermedi.',
+        # 'Koça boynuzu yük değil.',
+        # 'Kaza geliyorum demez.',
+        # 'Hırsızlık bir ekmekten, kahpelik bir öpmekten.',
+        # 'Karga kekliği taklit edeyim derken kendi yürüyüşünü şaşırmış.',
+        # 'İki cambaz bir ipte oynamaz.',
+        # 'İki koç kafası bir kazanda kaynamaz.',
+        # 'Yaza çıkardık danayı, beğenmez oldu anayı.',
+        # 'Merhaba, bir iş teklifi var. Bana bir e-posta yaz.',
+        'Ку шлюха. Привет от чатика',
+        'Кстати иди нахуй.',
+        'Верни 130к сука.',
+        'Наш искуственный интелект задетектил шлюху. Вот же она.',
+        'Как делы, собака сутулая',
+        'На то и бл:::дь, чтоб употреблять.',
+        'ну она спортсменка комсомолка..... индивидуалка',
+        'Я не шлюха, я — жертва страсти!',
+        'Мечта шлюхи о свободе - это мечта самой выбирать и клиентов и сутенеров.',
+        'Парадокс. Если девушка делится собою со всеми, то её называют - плохими словами.',
     ]
     phoneCodes = [
         '472', '322', '416', '256', '382', '358', '312', '242', '478', '466',
@@ -87,7 +94,7 @@ def yaNavojuNaVasGipnoz(data):
         r = requests.post(url, headers=headers, json=data, stream=True)
         code = r.status_code
         if code == 200:
-            print('Отправлено! ' + dictData['your-name'])
+            print('Отправлено! ' + ' <|> ' + dictData['your-message'])
         else:
             print('Мы в дерьме')
     except requests.exceptions.HTTPError as errh:
